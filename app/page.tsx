@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 import { timetableData, dayNames } from './constants';
 
 export default function Home() {
@@ -24,6 +25,15 @@ export default function Home() {
   const handlePrevDay = () => {
     setViewingDay((prev) => (prev >= 1 ? prev - 1 : 6));
   };
+     // Thêm vào app/page.tsx
+useEffect(() => {
+  const handler = () => {
+    setViewingDay(new Date().getDay());
+    setIsTimetableActive(prev => !prev);
+  };
+  window.addEventListener('toggle-timetable', handler);
+  return () => window.removeEventListener('toggle-timetable', handler);
+}, []);
 
   return (
     <>
@@ -133,21 +143,21 @@ export default function Home() {
           <div className="leaves">
             <h2>Teachers on leave</h2>
             <div className="teacher">
-              <div className="profile-photo"><img src="./images/profile-2.jpeg" alt="" /></div>
+              <div className="profile-photo"><Image src="/images/profile-2.jpeg" alt="The Professor" width={40} height={40} /></div>
               <div className="info">
                 <h3>The Professor</h3>
                 <small className="text-muted">Full Day</small>
               </div>
             </div>
             <div className="teacher">
-              <div className="profile-photo"><img src="./images/profile-3.jpg" alt="" /></div>
+              <div className="profile-photo"><Image src="/images/profile-3.jpg" alt="Lisa Manobal" width={40} height={40} /></div>
               <div className="info">
                 <h3>Lisa Manobal</h3>
                 <small className="text-muted">Half Day</small>
               </div>
             </div>
             <div className="teacher">
-              <div className="profile-photo"><img src="./images/profile-4.jpg" alt="" /></div>
+              <div className="profile-photo"><Image src="/images/profile-4.jpg" alt="Himanshu Jindal" width={40} height={40} /></div>
               <div className="info">
                 <h3>Himanshu Jindal</h3>
                 <small className="text-muted">Full Day</small>
