@@ -38,7 +38,7 @@ useEffect(() => {
   return (
     <>
         <main style={{ marginTop: '1.4rem' }}>
-          <h1>Attendance</h1>
+          <h1>Điểm danh</h1>
           <div className="subjects">
             <div className="eg">
               <span className="material-icons-sharp">architecture</span>
@@ -48,7 +48,7 @@ useEffect(() => {
                 <svg><circle cx="38" cy="38" r="36"></circle></svg>
                 <div className="number"><p>86%</p></div>
               </div>
-              <small className="text-muted">Last 24 Hours</small>
+              <small className="text-muted">24 giờ trước</small>
             </div>
             <div className="mth">
               <span className="material-icons-sharp">functions</span>
@@ -58,7 +58,7 @@ useEffect(() => {
                 <svg><circle cx="38" cy="38" r="36"></circle></svg>
                 <div className="number"><p>93%</p></div>
               </div>
-              <small className="text-muted">Last 24 Hours</small>
+              <small className="text-muted">24 giờ trước</small>
             </div>
             <div className="cs">
               <span className="material-icons-sharp">computer</span>
@@ -68,7 +68,7 @@ useEffect(() => {
                 <svg><circle cx="38" cy="38" r="36"></circle></svg>
                 <div className="number"><p>81%</p></div>
               </div>
-              <small className="text-muted">Last 24 Hours</small>
+              <small className="text-muted">24 giờ trước</small>
             </div>
             <div className="cg">
               <span className="material-icons-sharp">dns</span>
@@ -78,7 +78,7 @@ useEffect(() => {
                 <svg><circle cx="38" cy="38" r="36"></circle></svg>
                 <div className="number"><p>96%</p></div>
               </div>
-              <small className="text-muted">Last 24 Hours</small>
+              <small className="text-muted">24 giờ trước</small>
             </div>
             <div className="net">
               <span className="material-icons-sharp">router</span>
@@ -88,23 +88,23 @@ useEffect(() => {
                 <svg><circle cx="38" cy="38" r="36"></circle></svg>
                 <div className="number"><p>92%</p></div>
               </div>
-              <small className="text-muted">Last 24 Hours</small>
+              <small className="text-muted">24 giờ trước</small>
             </div>
           </div>
 
           <div className={`timetable ${isTimetableActive ? 'active' : ''}`} id="timetable">
             <div>
-              <span id="prevDay" onClick={handlePrevDay}>&lt;</span>
-              <h2>{viewingDay === new Date().getDay() ? "Today's Timetable" : dayNames[viewingDay]}</h2>
-              <span id="nextDay" onClick={handleNextDay}>&gt;</span>
+              <span id="prev" onClick={handlePrevDay}>&lt;</span>
+              <h2>{viewingDay === new Date().getDay() ? "Lịch học " : dayNames[viewingDay]}</h2>
+              <span id="next" onClick={handleNextDay}>&gt;</span>
             </div>
-            <span className="closeBtn" onClick={timeTableAll}>X</span>
+            <span className="Đóng" onClick={timeTableAll}>X</span>
             <table>
               <thead>
                 <tr>
-                  <th>Time</th>
-                  <th>Room No.</th>
-                  <th>Subject</th>
+                  <th>Thời gian</th>
+                  <th>Phòng</th>
+                  <th>Môn học</th>
                   <th></th>
                 </tr>
               </thead>
@@ -123,44 +123,44 @@ useEffect(() => {
         </main>
         <div className="right">
           <div className="announcements">
-            <h2>Announcements</h2>
+            <h2>Thông báo</h2>
             <div className="updates">
               <div className="message">
-                <p> <b>Academic</b> Summer training internship with Live Projects.</p>
-                <small className="text-muted">2 Minutes Ago</small>
+                <p> <b>Học vụ</b> Thực tập đào tạo hè với các Dự án Thực tế.</p>
+                <small className="text-muted">2 phút trước</small>
               </div>
               <div className="message">
-                <p> <b>Co-curricular</b> Global internship oportunity by Student organization.</p>
-                <small className="text-muted">10 Minutes Ago</small>
+                <p> <b>Ngoại khóa</b> Cơ hội thực tập toàn cầu từ Tổ chức Sinh viên.</p>
+                <small className="text-muted">10 phút trước</small>
               </div>
               <div className="message">
-                <p> <b>Examination</b> Instructions for Mid Term Examination.</p>
-                <small className="text-muted">Yesterday</small>
+                <p> <b>Thi cử</b> Hướng dẫn làm bài Thi Giữa kỳ.</p>
+                <small className="text-muted">Hôm qua</small>
               </div>
             </div>
           </div>
 
           <div className="leaves">
-            <h2>Teachers on leave</h2>
+            <h2>Giáo viên nghỉ</h2>
             <div className="teacher">
               <div className="profile-photo"><Image src="/images/profile-2.jpeg" alt="The Professor" width={40} height={40} /></div>
               <div className="info">
-                <h3>The Professor</h3>
-                <small className="text-muted">Full Day</small>
+                <h3>Giáo sư</h3>
+                <small className="text-muted">Nghỉ cả ngày</small>
               </div>
             </div>
             <div className="teacher">
               <div className="profile-photo"><Image src="/images/profile-3.jpg" alt="Lisa Manobal" width={40} height={40} /></div>
               <div className="info">
                 <h3>Lisa Manobal</h3>
-                <small className="text-muted">Half Day</small>
+                <small className="text-muted">Nửa ngày</small>
               </div>
             </div>
             <div className="teacher">
               <div className="profile-photo"><Image src="/images/profile-4.jpg" alt="Himanshu Jindal" width={40} height={40} /></div>
               <div className="info">
                 <h3>Himanshu Jindal</h3>
-                <small className="text-muted">Full Day</small>
+                <small className="text-muted">Nghỉ cả ngày</small>
               </div>
             </div>
           </div>
