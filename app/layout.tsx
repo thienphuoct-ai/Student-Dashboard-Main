@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { dayNames } from "./constants";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,19 +24,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // ← Dùng lazy initializer để đọc localStorage ngay lúc khởi tạo
+  // thay vì gọi setIsDarkMode bên trong useEffect
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return false; // tránh lỗi SSR
+    return localStorage.getItem('dark-theme') === 'true';
+  });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Khởi tạo Theme từ LocalStorage
+  // Chỉ còn scroll handler trong useEffect, không có setState trực tiếp
   useEffect(() => {
-    const savedTheme = localStorage.getItem('dark-theme') === 'true';
-    setIsDarkMode(savedTheme);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
+      setIsSidebarOpen(false); // Close sidebar when scrolling
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -62,7 +65,7 @@ export default function RootLayout({
       <body className={`${isDarkMode ? 'dark-theme' : ''} ${geistSans.variable} ${geistMono.variable}`}>
         <header className={isScrolled ? 'active' : ''}>
           <div className="logo" title="University Management System">
-            <img src="/images/logo.png" alt="Logo" style={{ width: '2rem' }} />
+            <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
             <h2>U<span className="danger">M</span>S</h2>
           </div>
           <div className="navbar">
@@ -101,7 +104,7 @@ export default function RootLayout({
             <div className="profile">
               <div className="top">
                 <div className="profile-photo">
-                  <img src="/images/profile-1.jpg" alt="Profile" />
+                  <Image src="/images/profile-1.jpg" alt="Profile" width={96} height={96} />
                 </div>
                 <div className="info">
                   <p>Hey, <b>Alex</b></p>
@@ -114,7 +117,7 @@ export default function RootLayout({
                 <h5>DOB</h5>
                 <p>29-Feb-2020</p>
                 <h5>Email</h5>
-                <p>unknown@gmail.com</p>
+                <p>thienphuoct97@gmail.com</p>
               </div>
             </div>
           </aside>
