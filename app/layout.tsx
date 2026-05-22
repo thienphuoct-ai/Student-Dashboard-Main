@@ -51,12 +51,6 @@ export default function RootLayout({
     localStorage.setItem('dark-theme', newTheme.toString());
   };
 
-  // Gửi sự kiện mở Timetable cho Page.tsx
-  const triggerTimetable = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent('toggle-timetable'));
-  };
-
   return (
     <html lang="en">
       <head>
@@ -73,10 +67,10 @@ export default function RootLayout({
               <span className="material-icons-sharp">home</span>
               <h3>Home</h3>
             </Link>
-            <a href="#" onClick={triggerTimetable}>
+            <Link href="/timetable">
               <span className="material-icons-sharp">today</span>
               <h3>Time Table</h3>
-            </a>
+            </Link>
             <Link href="/exam">
               <span className="material-icons-sharp">grid_view</span>
               <h3>Examination</h3>

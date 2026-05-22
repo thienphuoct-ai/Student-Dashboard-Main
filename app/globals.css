@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root{
+    /* Màu chính, màu phụ */
     --color-primary: #7380ec;
     --color-danger: #ff7782;
     --color-success: #41f1b6;
@@ -11,12 +12,15 @@
     --color-light: rgba(132, 139, 200, 0.18);
     --color-dark-varient: #677483;
     --color-background: #f6f6f9;
-    
+    /* Bo góc (Border radius) */
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
     --border-radius-2: 1.2rem;
-
+/* Khoảng cách (Spacing & Padding) */
     --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    /* Đổ bóng (Shadow) */
     --box-shadow: 0 2rem 3rem var(--color-light)    
 }
 
@@ -317,6 +321,7 @@ main .timetable.active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 main .timetable.active h2{
     color: var(--color-dark);
