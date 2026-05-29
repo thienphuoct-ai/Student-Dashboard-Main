@@ -244,7 +244,7 @@ export default function RootLayout({
               <div className="top">
                 <div className="profile-photo">
                   <Image
-                    src="/images/profile-1.jpg"
+                    src={`${basePath}/images/profile-1.jpg`}
                     alt="Profile"
                     width={96}
                     height={96}

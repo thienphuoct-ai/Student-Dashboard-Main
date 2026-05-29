@@ -169,7 +169,7 @@ export default function Home() {
           <div className="teacher">
             <div className="profile-photo">
               <Image
-                src={`${basePath}/images/profile-2.jpeg`}
+                src={`${basePath}/images/profile-2.png`}
                 alt="Nguyễn Vũ Phúc"
                 width={40}
                 height={40}
@@ -184,7 +184,7 @@ export default function Home() {
           <div className="teacher">
             <div className="profile-photo">
               <Image
-                src={`${basePath}/images/profile-3.jpg`}
+                src={`${basePath}/images/profile-3.png`}
                 alt="Duy Quang"
                 width={40}
                 height={40}
