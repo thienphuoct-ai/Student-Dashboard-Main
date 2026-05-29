@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { timetableData, dayNames } from './constants';
+const basePath = process.env.NODE_ENV === 'production'
+  ? '/Student-Dashboard-Main'
+  : '';
 
 export default function Home() {
   const [viewingDay, setViewingDay] = useState(new Date().getDay());
@@ -166,7 +169,7 @@ export default function Home() {
           <div className="teacher">
             <div className="profile-photo">
               <Image
-                src="/images/profile-2.png"
+                src={`${basePath}/images/profile-2.jpeg`}
                 alt="Nguyễn Vũ Phúc"
                 width={40}
                 height={40}
@@ -181,7 +184,7 @@ export default function Home() {
           <div className="teacher">
             <div className="profile-photo">
               <Image
-                src="/images/profile-3.png"
+                src={`${basePath}/images/profile-3.jpg`}
                 alt="Duy Quang"
                 width={40}
                 height={40}
@@ -196,7 +199,7 @@ export default function Home() {
           <div className="teacher">
             <div className="profile-photo">
               <Image
-                src="/images/profile-4.jpg"
+                src={`${basePath}/images/profile-4.jpg`}
                 alt="Nguyễn Minh Phúc"
                 width={40}
                 height={40}

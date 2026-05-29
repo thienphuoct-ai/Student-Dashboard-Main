@@ -11,6 +11,10 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
+// Lấy basePath tự động theo môi trường
+const basePath = process.env.NODE_ENV === 'production' 
+  ? '/Student-Dashboard-Main' 
+  : '';
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
@@ -89,7 +93,7 @@ export default function RootLayout({
         <header className={isScrolled ? 'active' : ''}>
           {/* Logo */}
           <div className="logo" title="University Management System">
-            <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
+            <Image src={`${basePath}/images/logo.png`} alt="Logo" width={32} height={32} />
             <h2>U<span className="danger">M</span>S</h2>
           </div>
 
