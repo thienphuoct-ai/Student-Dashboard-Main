@@ -456,3 +456,112 @@ main .timetable.active .closeBtn{
         padding: 2rem;
     }
 }
+/* ============================================================
+   DARK MODE PATCH — Thêm vào cuối file globals.css
+   Fix: select, input[type=date], input[type=time], input[type=text]
+   không đồng bộ với dark mode
+   ============================================================ */
+
+/* ── Base: tất cả input/select/textarea dùng CSS variables ── */
+input,
+select,
+textarea {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  border-color: rgba(132, 139, 200, 0.3);
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+
+/* ── Focus state ─────────────────────────────────────────── */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(115, 128, 236, 0.2);
+}
+
+/* ── Select: ẩn mũi tên mặc định của trình duyệt,
+      dùng mũi tên tùy chỉnh đồng bộ với dark mode ───────── */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  /* Mũi tên SVG inline — màu thay đổi theo theme */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%237d8da1' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  padding-right: 2rem !important;
+  cursor: pointer;
+}
+
+/* ── input[type=date] và input[type=time]:
+      icon calendar/clock của trình duyệt cần được tô màu ── */
+input[type="date"],
+input[type="time"] {
+  color-scheme: light;   /* mặc định là light */
+}
+
+/* Khi dark mode bật → đổi color-scheme để icon theo màu tối */
+.dark-theme input[type="date"],
+.dark-theme input[type="time"] {
+  color-scheme: dark;
+}
+
+/* ── input[type=range] (slider tiến độ) ─────────────────── */
+input[type="range"] {
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--color-light);
+  height: 4px;
+  border-radius: 2px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  margin-top: -5px;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ── Placeholder text ────────────────────────────────────── */
+::placeholder {
+  color: var(--color-info);
+  opacity: 0.7;
+}
+
+/* ── Modal overlay và card trong dark mode ───────────────── */
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background-color: var(--color-white);   /* trong dark-theme, --color-white = #202528 */
+  color: var(--color-dark);               /* trong dark-theme, --color-dark  = #edeffd */
+  border-color: rgba(132, 139, 200, 0.2);
+}
+
+/* ── Dropdown option trong dark mode ────────────────────── */
+.dark-theme select option {
+  background-color: #202528;
+  color: #edeffd;
+}
+
+/* ── Scrollbar tùy chỉnh cho dark mode ──────────────────── */
+.dark-theme ::-webkit-scrollbar {
+  width: 6px;
+}
+.dark-theme ::-webkit-scrollbar-track {
+  background: var(--color-white);
+}
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: var(--color-light);
+  border-radius: 3px;
+}
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
