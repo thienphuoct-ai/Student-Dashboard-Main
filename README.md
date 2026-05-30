@@ -22,15 +22,18 @@ Website là một Dashboard dành riêng cho sinh viên, giúp theo dõi quá tr
 **Bước 1:** Clone mã nguồn từ GitHub về máy
 ```bash
 git clone https://github.com/thienphuoct-ai/Student-Dashboard-Main.git
+```
 **Bước 2:** Di chuyển vào thư mục dự án
-
-```bash
+```Bash
 cd [Tên-thư-mục-dự-án]
 **Bước 3:** Cài đặt các thư viện cần thiết
 ```Bash
 npm install
+```
 **Bước 4:** Khởi chạy server ở chế độ phát triển
 
 ```Bash
 npm run dev
-
+```
+## 5.Link online của dự án 
+https://thienphuoct-ai.github.io/Student-Dashboard-Main/
